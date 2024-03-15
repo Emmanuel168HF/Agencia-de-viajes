@@ -1,0 +1,420 @@
+
+<!- Objetivo: Administrar una agencia de viajes.
+Visualizar:
+AGENCIA DE VIAJES "HAVE FUN"
+1.Destino
+2.Hospedaje
+3.Alimentos
+4.descripcion del viajes
+Programadores: Armando Emmanuel Gomez Almaraz, Jesualdo Viveros Maturano->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAVE FUN</title>
+</head>
+<body>
+   <script>
+    
+    var hombre = 0;
+    var mujer = 0;
+    
+    var hombres = 0;
+    var mujeres = 0;
+
+    var hombresTotal = 0;
+    var mujeresTotal = 0;
+    
+
+    //variables para el destino del lugar al que va viajar
+    //Este tipo de declaracion define un dato de cadena para escribir ala hora de imprir los datos del viaje
+    var destinos = {
+        "1": "México - Cancún",
+        "2": "Madrid - España",
+        "3": "Colombia - Bogotá"
+    };
+    
+    do {
+    var nombre;
+    var Edad = 0;
+    var estado; 
+    var municipio;
+    var numeroTelefonico = 0;
+    var seleccionarhoteles;
+    var hoteles;
+    var habitacion = 0;
+    var tipoHabitacion;
+    var comida = 0;
+    var costohabitacion = 0;
+    var cantidadPersonas = 0;
+    var correoElectronico;
+    var menu;
+    var menucomida = 0;
+    var destinosSeleccionados = [];
+    //variables para las comidas
+    var economico;
+    var basico;
+    var vip;
+    
+    alert ("Bienvenido a la agencia de viajes >>>Have Fun<<<")
+    do {
+        var seleccionDestino = prompt("Selecciona el destino:\n1. México - Cancún\n2. Madrid - España\n3. Colombia - Bogotá\n4.Salir del programa");
+        if (seleccionDestino === null || seleccionDestino.trim() === "") {
+            continue;
+        }
+
+        switch (seleccionDestino) {
+            case "1":
+                destinosSeleccionados.push(destinos["1"]);
+
+                do {
+                    var seleccionarHotel = prompt("Selecciona el hotel donde deseas hospedarte:\n1. Hotel Coral Paradise\n2. Resort Sol y Mar\n3. Hotel Playa Azul");
+                    if (seleccionarHotel === null || seleccionarHotel.trim() === "") {
+                        continue;
+                    }
+                    seleccionarHotel = parseInt(seleccionarHotel);
+                    switch (seleccionarHotel) {
+                        case 1:
+                            var hotel = "Hotel Coral Paradise ";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 2:
+                            var hotel = "Resort Sol y Mar";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 3:
+                            var hotel = "Hotel Playa Azul";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        default:
+                            alert("Selecciona un hotel válido");
+                            continue;
+                    }
+                } while (seleccionarHotel === null || seleccionarHotel > 3 || seleccionarHotel < 1);
+                break;
+            case "2":
+                destinosSeleccionados.push(destinos["2"]);
+                
+                do {
+                    var seleccionarHotel = prompt("Selecciona el hotel donde deseas hospedarte:\n1. Gran Hotel Castellana\n2. Hotel Real Madrid\n3. Hotel España Imperial");
+                    if (seleccionarHotel === null || seleccionarHotel.trim() === "") {
+                        continue;
+                    }
+                    seleccionarHotel = parseInt(seleccionarHotel);
+                    switch (seleccionarHotel) {
+                        case 1:
+                            var hotel = "Gran Hotel Castellana";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 2:
+                            var hotel = "Hotel Real Madrid";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 3:
+                            var hotel = "Hotel España Imperial";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        default:
+                            alert("Selecciona un hotel válido");
+                            continue;
+                    }
+                } while (seleccionarHotel === null || seleccionarHotel > 3 || seleccionarHotel < 1);
+                break;
+            case "3":
+                destinosSeleccionados.push(destinos["3"]);
+
+                do {
+                    var seleccionarHotel = prompt("Selecciona el hotel donde deseas hospedarte:\n1. Hotel Andes\n2. Hotel Bogotá Central\n3. Hotel Montaña Azul");
+                    if (seleccionarHotel === null || seleccionarHotel.trim() === "") {
+                        continue;
+                    }
+                    seleccionarHotel = parseInt(seleccionarHotel);
+                    switch (seleccionarHotel) {
+                        case 1:
+                            var hotel = "Hotel Andes";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 2:
+                            var hotel = "Hotel Bogotá Central";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        case 3:
+                            var hotel = "Hotel Montaña Azul";
+                            alert("Has seleccionado " + hotel);
+                            break;
+                        default:
+                            alert("Selecciona un hotel válido");
+                            continue;
+                    }
+                } while (seleccionarHotel === null || seleccionarHotel > 3 || seleccionarHotel < 1);
+                break;
+            case "4":
+                alert("Entendemos que cambiaste de opinion al querer realizar una reserva");
+                alert("Esperamos que tengas un buen dia :)");
+                exit(0);//Se utiliza para salir del programa
+                break;
+            default:
+                alert("Selecciona un destino válido.");
+                continue;
+        }
+        seleccionDestino = parseInt(seleccionDestino);
+        } while (seleccionDestino === null || seleccionDestino > 3 || seleccionDestino < 1);
+        
+        //cantidad de personas que asistiran al viaje
+        do {
+        
+            cantidadPersonas = prompt("Precio de las habitacion\n1.Sencilla:$2000 = 1 o 2 Personas\n2.Doble:$3500 = 3 o 4 Personas\n3.Múltiple:$7000 = 5 o 6 Personas\n¿Cuántas personas van al viaje?");
+            cantidadPersonas = parseInt(cantidadPersonas);
+            if (cantidadPersonas >= 1 && cantidadPersonas <= 6 && cantidadPersonas != null) {
+                alert("Cantidad de personas válida, continuemos con tu reserva");
+            } else {
+                alert("La cantidad de personas no es válida para realizar una reservación");
+            }
+        } while (cantidadPersonas < 1 || cantidadPersonas > 6 || cantidadPersonas == null);
+       
+        if (cantidadPersonas <= 2) {
+            tipoHabitacion = "Sencilla";
+            costohabitacion = 2000;
+        } else if (cantidadPersonas <= 4) {
+            tipoHabitacion = "Doble";
+            costohabitacion = 3500;
+        } else {
+            tipoHabitacion = "Múltiple";
+            costohabitacion = 7000
+        }
+        
+        //Genero de los personas
+        for (let i = 0; i < cantidadPersonas; i++) {
+        var generoPersona;
+        do {
+            generoPersona = prompt("Género de la persona " + (i + 1) + ":\n1. Masculino\n2. Femenino");
+            generoPersona = parseInt(generoPersona);
+            
+            if (generoPersona === 1 || generoPersona === 2) {
+                if (generoPersona === 1) {
+                    hombres++;
+                    alert("Masculino");
+                } else {
+                    mujeres++;
+                    alert("Femenino");
+                }
+            } else {
+                alert("Por favor, selecciona una opción válida.");
+            }
+        } while (generoPersona !== 1 && generoPersona !== 2);
+    }
+     //Cantidad de dias de hospedaje
+     do{
+            var diasdeHospedaje = prompt("Registra la cantidad de dias que te quieres hospedar(Minimo 1 Maximo 7 Dias):");  
+            if (diasdeHospedaje >= 1 && diasdeHospedaje <= 7 && diasdeHospedaje != null) {
+                alert("La cantidad de dias de tu reserva son:"+diasdeHospedaje);
+            } else {
+                alert("La cantidad de personas no es válida para realizar una reservación");
+            }
+        }while(diasdeHospedaje < 1 || diasdeHospedaje > 6 || diasdeHospedaje == null)
+        //comidas por categorias
+        do {
+            comida = prompt("Selecciona la comida que deseas consumir:\n1. Económica: $200\n2. Normal: $500\n3. VIP: $900");
+            comida = parseInt(comida);
+
+            if (comida === 1 || comida === 2 || comida === 3) {
+                switch(comida){
+                    case 1:
+                            menu = "Económico";
+                            alert("Has seleccionado " + menu);
+                            economico ++;
+                            menucomida = 200; 
+                        break;
+                    case 2:
+                            menumenu = "Normal";
+                            alert("Has seleccionado " + menu);
+                            menucomida = 500;
+                            basico ++;
+                        break;
+                    case 3:
+                            menu = "VIP";
+                            alert("Has seleccionado " + menu);
+                            menucomida = 900;
+                            vip ++;
+                        break;
+                }
+            } else {
+                alert("Por favor, selecciona una opción válida.");
+            }
+        } while (comida === null || comida < 1 || comida > 3);
+        //Preguntar por la cantidad de dias que nesecita comida al dia
+        do{
+           var cantidaComidaDias = prompt("Registra cuantos dias quieres recibir comida:");
+           if (cantidaComidaDias >= 1 && cantidaComidaDias <= 7 && cantidaComidaDias != null) {
+           genero = parseInt(cantidaComidaDias);
+          var preciodecomidatotal = (cantidadPersonas * cantidaComidaDias) * menucomida;
+        } 
+        else {
+                alert("La cantidad de personas no es válida para realizar una reservación");
+            }
+        }while(cantidaComidaDias === null || cantidaComidaDias < 1 || cantidaComidaDias > 7)
+        //Nombre del quien solicito la reservacion
+        do {
+            nombre = prompt("Nombre del anfitrión del viaje:");
+            if (nombre != null && nombre.length >= 3 && nombre.length <= 20) {
+                nombre = nombre.toUpperCase();
+                alert("Bienvenido: " + nombre);
+            } else {
+                alert("Debe introducir un nombre válido con mínimo 3 caracteres y máximo 20.");
+            }
+        } while (nombre === null || nombre.length < 3 || nombre.length > 20);
+
+        do {
+            Edad = prompt("Registra tu edad: ");
+            if (Edad >= 18 && Edad <= 80 && Edad != null) {
+                alert("Edad Válida, sigamos con tu reserva");
+            } else {
+                alert("No cumples con la edad para realizar una reservación");
+            } 
+        } while (Edad < 18 || Edad > 80 || Edad == null);
+    
+        do {
+            var genero = prompt("Género: \n1. Masculino\n2. Femenino");
+            genero = parseInt(genero);
+            if (genero != null && (genero == 1 || genero == 2)) {
+                if (genero == 1) {
+                    hombre++;
+                    alert("Masculino");
+                } else {
+                    mujer++;
+                    alert("Femenino");
+                }
+            } else {
+                alert("Debe seleccionar una opción válida para género.");
+            }
+        } while (genero === null || (genero != 1 && genero != 2));
+
+        do {
+            numeroTelefonico = prompt("Ingresa tu número telefónico:");
+            if (numeroTelefonico != null && numeroTelefonico.length >= 9 && numeroTelefonico.length <= 10) {
+                numeroTelefonico = numeroTelefonico.toUpperCase();
+            } else {
+                alert("Debe tener mínimo 9 caracteres y máximo 10");
+            }
+        } while (numeroTelefonico === null || numeroTelefonico.length < 9 || numeroTelefonico.length > 10);
+        //Correo Electronico
+        do {
+            correoElectronico = prompt("Por favor, ingresa tu correo electrónico:");
+            if (correoElectronico !== null && correoElectronico.length >= 5 && correoElectronico.length <= 30) {
+                alert("Correo electrónico válido. ¡Continuemos con tu reserva!");
+            } else {
+                alert("El correo electrónico debe tener entre 5 y 50 caracteres.");
+            }
+        } while (correoElectronico === null || correoElectronico.length < 5 || correoElectronico.length > 30);
+       
+        do {
+            estado = prompt("Selecciona tu estado: \n1. Hidalgo \n2. Querétaro \n3. Puebla");
+            estado = parseInt(estado);
+            switch (estado) {
+                case 1:
+                    estado = "Hidalgo";
+                    do {
+                        municipio = prompt("Selecciona tu municipio en Hidalgo: \n1. Tlaxcoapan \n2. Atitalaquia \n3. Tula de Allende");
+                        municipio = parseInt(municipio);
+                        switch (municipio) {
+                            case 1:
+                                municipio = "Tlaxcoapan";
+                                break;
+                            case 2:
+                                municipio = "Atitalaquia";
+                                break;
+                            case 3:
+                                municipio = "Tula de Allende";
+                                break;
+                            default:
+                                alert("Opción no válida");
+                                break;
+                        }
+                    } while (municipio === null || municipio < 1 || municipio > 3);
+                    break;
+                case 2:
+                    estado = "Querétaro";
+                    do {
+                        municipio = prompt("Selecciona tu municipio en Querétaro: \n1. Tequisquiapan \n2. San Joaquín \n3. San Juan del Río");
+                        municipio = parseInt(municipio);
+                        switch (municipio) {
+                            case 1:
+                                municipio = "Tequisquiapan";
+                                break;
+                            case 2:
+                                municipio = "San Joaquín";
+                                break;
+                            case 3:
+                                municipio = "San Juan del Río";
+                                break;
+                            default:
+                                alert("Opción no válida");
+                                break;
+                        }
+                    } while (municipio === null || municipio < 1 || municipio > 3);
+                    break;
+                case 3:
+                    estado = "Puebla";
+                    do {
+                        municipio = prompt("Selecciona tu municipio en Puebla: \n1. Tepeaca \n2. Cuautlancingo \n3. Progreso");
+                        municipio = parseInt(municipio);
+                        switch (municipio) {
+                            case 1:
+                                municipio = "Tepeaca";
+                                break;
+                            case 2:
+                                municipio = "Cuautlancingo";
+                                break;
+                            case 3:
+                                municipio = "Progreso";
+                                break;
+                            default:
+                                alert("Opción no válida");
+                                break;
+                        }
+                    } while (municipio === null || municipio < 1 || municipio > 3);
+                    break;
+                default:
+                    alert("Opción no válida");
+                    break;
+            }    
+
+
+        } while (estado === null || estado < 1 || estado > 3);
+        var costoHabitacionDias = diasdeHospedaje * costohabitacion;
+        var mensajeFinal = "Resumen de tu reserva:\n" +
+        
+
+                "Destinos seleccionados: " + destinosSeleccionados.join(", ") + "\n" +
+                "Nombre del anfitrión: " + nombre + "\n" +
+                "Costo de habitacion $" + costohabitacion+ "\n"+
+                "Costo de habitacion por todos los dias de hospedaje: " + costoHabitacionDias + "\n" +
+                "Cantidad a pagar por cada platillo: $" + menucomida + "\n"+
+                "Cantidad a pagar por toda la comida que se consumio: $" + preciodecomidatotal + "\n"+
+                "Dias de hospedaje: " + diasdeHospedaje + "\n"+
+                
+                "Edad del anfitrion: " + Edad + "\n" +
+                "Género del anfitrion: " + (genero == 1 ? "Masculino" : "Femenino") + "\n" +
+                "Número telefonico del anfitrion: " + numeroTelefonico + "\n" +
+                "Correo electrónico del anfitrion: " + correoElectronico + "\n" +
+                "Estado del anfitrion: " + estado + "\n" +
+                "Municipio del anfitrion: " + municipio + "\n";
+                
+
+        alert(mensajeFinal);
+
+        var respuesta = confirm("Selecciona OK si quieres realizar otra reserva de viaje, si no presiona Cancelar.");
+    } while (respuesta == true);
+    var totalpersonas = mujeres + hombres;
+    var  mesajeEstadisticas = "Cantidad de personas que han viajado: "+totalpersonas+"\n"+
+    "Cantidad de Hombre que han viajado: "+hombres+"\n"+
+    "Cantidad de mujeres que han viajado: "+mujeres+"\n"+
+    "Cantidad de comida economica vendida: "+economico+"\n"
+    "Cantidad de comida normal vendida: "+basico+"\n"
+    "Cantidad de comida VIP vendida: "+vip+"\n"
+    "Comida Mas comprada"+"\n"   
+    alert(mesajeEstadisticas); 
+   </script> 
+</body>
+</html>
